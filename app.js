@@ -2,12 +2,15 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 require("dotenv/config");
+const userRoute = require("./routes/auth");
 //----------
+
+//import routes
+app.use("/api/users/", userRoute);
 
 app.get("/", (req, res) => {
   res.send("HOME");
 });
-
 //----------
 mongoose.connect(process.env.DB_CONNECTION, () => {
   console.log("connected to DB");
