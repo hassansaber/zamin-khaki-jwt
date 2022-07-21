@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 require("dotenv/config");
 const userRoute = require("./routes/auth");
+app.use(express.json());
 //----------
 
 //import routes

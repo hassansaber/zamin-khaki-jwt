@@ -1,5 +1,6 @@
 const router = require("express").Router();
 
+const User = require("../model/User.model");
 //----- /api/users/
 
 router.get("/", (req, res) => {
@@ -7,7 +8,10 @@ router.get("/", (req, res) => {
 });
 
 router.post("/register", (req, res) => {
-  res.send("posting  for register");
+  // res.send(req.body);
+  const {name , email, password } = req.body
+
+  const user
 });
 
 //-----
