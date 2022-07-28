@@ -58,15 +58,14 @@ router.post("/login", async (req, res) => {
   const user = await User.findOne({ email });
   if (!user) return res.status(400).send("Invalid Email");
 
-  //validate password decryting
+  //validate password decryting by comparing password with hashed one in DB
   const validPass = await bcrypt.compare(password, user.password);
   if (!validPass) return res.status(400).send("Invalid password");
 
   //create web token  for who successfully logged in
   const token = JWT.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+  //set token to the header as...
   res.header("auth-token", token).send(token);
-
-  // res.send(req.body);
 
   //
 });

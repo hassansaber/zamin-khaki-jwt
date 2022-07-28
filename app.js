@@ -3,11 +3,14 @@ const app = express();
 const mongoose = require("mongoose");
 require("dotenv/config");
 const userRoute = require("./routes/auth");
+const postsRoute = require("./routes/posts");
+
 app.use(express.json());
 //----------
 
 //import routes
 app.use("/api/users/", userRoute);
+app.use("/api/posts/", postsRoute);
 
 app.get("/", (req, res) => {
   res.send("HOME");
